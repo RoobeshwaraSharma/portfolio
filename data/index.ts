@@ -8,7 +8,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/roobeshwarasharma",
   github: "https://github.com/RoobeshwaraSharma",
   githubUsername: "RoobeshwaraSharma",
-  openToWork: true,
+  openToWork: false, // set to true to show "Open to opportunities" badge in Hero
   summary:
     "Senior Software Engineer with 4+ years of full-stack experience across ASP.NET Core, Next.js, Node.js, React, and Azure. Currently working with LLMs and RAG, leveraging Python to integrate AI capabilities into real-world applications.",
 };

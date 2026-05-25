@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx shadcn@latest init --yes --defaults)",
+      "Bash(Start-Sleep -Seconds 3)",
+      "Bash(Get-Content \"C:\\\\Users\\\\ROOBES~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\e--projects-portfolio-portfolio\\\\5e8839b9-5a47-4c6b-bac6-3dd4b4242c1a\\\\tasks\\\\bs9119ywu.output\")",
+      "Bash(Select-Object -Last 30)",
+      "Bash(npx playwright *)"
+    ]
+  }
+}

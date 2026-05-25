@@ -1,7 +1,9 @@
-import { personalInfo, certifications } from "@/data";
+import { certifications } from "@/data";
 import SectionHeader from "@/components/ui/SectionHeader";
 import FadeIn from "@/components/ui/FadeIn";
-import { IconCertificate, IconBriefcase, IconCode } from "@tabler/icons-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { IconCertificate, IconCode } from "@tabler/icons-react";
 
 export default function About() {
   const stats = [
@@ -12,114 +14,153 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="max-w-6xl mx-auto px-6">
+    <section id="about" className="mx-auto px-8">
       <SectionHeader
         label="// about"
         title="Who I am"
         subtitle="A little bit about my background, what I do, and what drives me."
       />
 
-      <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Bio */}
         <div className="space-y-4">
           <FadeIn delay={0.1}>
-            <p className="text-[#a0a0a0] leading-relaxed">
-              I&apos;m a Senior Software Engineer based in Colombo, Sri Lanka, with over 4 years of hands-on
-              experience building full-stack systems. My primary stack revolves around{" "}
+            <p className="text-muted-foreground leading-relaxed">
+              I&apos;m a Senior Software Engineer based in Colombo, Sri Lanka,
+              with over 4 years of hands-on experience building full-stack
+              systems. My primary stack revolves around{" "}
               <span className="text-[#a89de8]">ASP.NET Core</span>,{" "}
               <span className="text-[#a89de8]">React</span>, and{" "}
-              <span className="text-[#a89de8]">Next.js</span>, with deep expertise in deploying
-              scalable solutions on <span className="text-[#a89de8]">Microsoft Azure</span>.
+              <span className="text-[#a89de8]">Next.js</span>, with deep
+              expertise in deploying scalable solutions on{" "}
+              <span className="text-[#a89de8]">Microsoft Azure</span>.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-[#a0a0a0] leading-relaxed">
-              Currently at <span className="text-[#f0f0f0]">Avonet Technologies</span>, I focus on
-              system architecture and integrating cutting-edge AI — particularly{" "}
-              <span className="text-[#4ade80]">LLMs</span> and{" "}
-              <span className="text-[#4ade80]">Retrieval-Augmented Generation (RAG)</span> — into
-              production-grade applications using Python.
+            <p className="text-muted-foreground leading-relaxed">
+              Currently at{" "}
+              <span className="text-foreground font-medium">
+                Avonet Technologies
+              </span>
+              , I focus on system architecture and integrating cutting-edge AI —
+              particularly <span className="text-[#4ade80]">LLMs</span> and{" "}
+              <span className="text-[#4ade80]">
+                Retrieval-Augmented Generation (RAG)
+              </span>{" "}
+              — into production-grade applications using Python.
             </p>
           </FadeIn>
           <FadeIn delay={0.3}>
-            <p className="text-[#a0a0a0] leading-relaxed">
-              I care deeply about code quality, maintainability, and building systems that scale.
-              When I&apos;m not shipping features, I&apos;m exploring the latest developments in
-              applied AI and developer tooling.
+            <p className="text-muted-foreground leading-relaxed">
+              I care deeply about code quality, maintainability, and building
+              systems that scale. When I&apos;m not shipping features, I&apos;m
+              exploring the latest developments in applied AI and developer
+              tooling.
             </p>
           </FadeIn>
 
           {/* Certifications */}
           <FadeIn delay={0.4}>
-            <div className="mt-6 p-4 rounded-xl border border-[#1f1f1f] bg-[#111]">
-              <div className="flex items-center gap-2 mb-3">
-                <IconCertificate size={16} className="text-[#7c6fcd]" />
-                <span className="text-xs text-[#666] font-mono uppercase tracking-wider">Certifications</span>
-              </div>
-              {certifications.map((cert) => (
-                <div key={cert.name} className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-[#f0f0f0]">{cert.name}</p>
-                    <p className="text-xs text-[#555]">{cert.issuer}</p>
-                  </div>
-                  <span className="px-2 py-0.5 rounded text-xs font-mono bg-[#1a1f2e] text-[#7c6fcd] border border-[#2a3050]">
-                    {cert.badge}
+            <Card className="border-border bg-card mt-2">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <IconCertificate size={16} className="text-[#7c6fcd]" />
+                  <span className="text-xs text-muted-foreground font-mono uppercase tracking-wider">
+                    Certifications
                   </span>
                 </div>
-              ))}
-            </div>
+                {certifications.map((cert) => (
+                  <div
+                    key={cert.name}
+                    className="flex items-center justify-between"
+                  >
+                    <div>
+                      <p className="text-sm text-foreground">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground/70">
+                        {cert.issuer}
+                      </p>
+                    </div>
+                    <span className="px-2 py-0.5 rounded text-xs font-mono bg-[#7c6fcd]/10 text-[#7c6fcd] border border-[#7c6fcd]/20">
+                      {cert.badge}
+                    </span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
           </FadeIn>
         </div>
 
-        {/* Stats grid */}
+        {/* Stats grid + Currently + Interests */}
         <div className="space-y-4">
           <FadeIn delay={0.1} direction="right">
             <div className="grid grid-cols-2 gap-3">
-              {stats.map((stat, i) => (
-                <div
+              {stats.map((stat) => (
+                <Card
                   key={stat.label}
-                  className="p-4 rounded-xl border border-[#1f1f1f] bg-[#111] hover:border-[#2a2a3a] transition-colors"
+                  className="border-border bg-card hover:border-[#7c6fcd]/30 transition-colors"
                 >
-                  <p className="text-2xl font-medium text-[#f0f0f0] mb-1">{stat.value}</p>
-                  <p className="text-xs text-[#555]">{stat.label}</p>
-                </div>
+                  <CardContent className="p-4">
+                    <p className="text-2xl font-medium text-foreground mb-1">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {stat.label}
+                    </p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </FadeIn>
 
           {/* Currently */}
           <FadeIn delay={0.2} direction="right">
-            <div className="p-4 rounded-xl border border-[#1a3a24] bg-[#0d1f14]">
-              <div className="flex items-center gap-2 mb-3">
+            <div className="p-4 rounded-xl border border-[#1a3a24] dark:bg-[#0d1f14] bg-[#dcfce7]">
+              <div className="flex items-center gap-2 mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
-                <span className="text-xs text-[#4ade80] font-mono uppercase tracking-wider">Currently</span>
+                <span className="text-xs text-[#4ade80] font-mono uppercase tracking-wider">
+                  Currently
+                </span>
               </div>
-              <p className="text-sm text-[#a0a0a0]">
+              <p className="text-sm text-foreground">
                 Senior Software Engineer at{" "}
-                <span className="text-[#f0f0f0]">Avonet Technologies</span>
+                <span className="font-medium">Avonet Technologies</span>
               </p>
-              <p className="text-xs text-[#555] mt-1">Building AI-powered full-stack systems · Colombo, SL</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Building AI-powered full-stack systems · Colombo, SL
+              </p>
             </div>
           </FadeIn>
 
           {/* Interests */}
           <FadeIn delay={0.3} direction="right">
-            <div className="p-4 rounded-xl border border-[#1f1f1f] bg-[#111]">
-              <div className="flex items-center gap-2 mb-3">
-                <IconCode size={16} className="text-[#7c6fcd]" />
-                <span className="text-xs text-[#666] font-mono uppercase tracking-wider">Interests</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {["LLMs", "RAG", "System Design", "Clean Architecture", "Developer Tools", "Open Source"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2.5 py-1 rounded-md text-xs text-[#7a7a8a] bg-[#16161e] border border-[#222230]"
-                  >
-                    {tag}
+            <Card className="border-border bg-card">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <IconCode size={16} className="text-[#7c6fcd]" />
+                  <span className="text-xs text-muted-foreground font-mono uppercase tracking-wider">
+                    Interests
                   </span>
-                ))}
-              </div>
-            </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "LLMs",
+                    "RAG",
+                    "System Design",
+                    "Clean Architecture",
+                    "Developer Tools",
+                    "Open Source",
+                  ].map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="secondary"
+                      className="text-xs border border-border"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </FadeIn>
         </div>
       </div>
